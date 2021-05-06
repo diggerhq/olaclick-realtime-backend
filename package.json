@@ -19,6 +19,8 @@
   "homepage": "https://github.com/diggerhq/olaclick-realtime-backend#readme",
   "dependencies": {
     "@aws-sdk/client-apigatewaymanagementapi": "^3.14.0",
+    "aws4": "^1.11.0",
+    "axios": "^0.21.1",
     "express": "^4.17.1"
   },
   "devDependencies": {

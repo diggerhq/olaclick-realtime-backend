@@ -1,13 +1,16 @@
 const express = require('express');
 const { ApiGatewayManagementApiClient, PostToConnectionCommand } = require("@aws-sdk/client-apigatewaymanagementapi");
+const https = require('https');
+const aws4  = require('aws4');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Storing connections in memory just for demo purposes
 // In production a persistent storage like DynamoDB or Postgres should be used
 // Otherwise the service won't scale horizontally
 const connections = new Set(['e7NGKfNFoAMCLeg=']);
+const gatewayId = 'mnv8w06et6';
 
 const awsClient = new ApiGatewayManagementApiClient({
     region: 'us-east-1',
@@ -24,11 +27,17 @@ app.get('/test', (req, res) => {
             ConnectionId: connectionId,
             Data: 'test'
         });
-        try {
-            awsClient.send(gatewayCommand);
-        } catch (error) {
-            console.error(error);
-        }
+        const options = {
+            method: 'POST',
+            host: `${gatewayId}.execute-api.us-east-1.amazonaws.com/production/@connections`,
+            path: `/${connectionId}`,
+            service: 'apigateway',
+            region: 'us-east-1'
+        };
+        aws4.sign(options);
+        https.request(options, (res) => {
+            console.log(res);
+        });
     });
     res.send('Test');
 });
