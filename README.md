@@ -21,5 +21,5 @@ Horizontal scalability of real-time backends for web apps is not trivial
 
 ![Architecture](https://i.ibb.co/t8V7r1F/Screenshot-2021-05-07-at-21-38-20.png)
 
-With Digger you don't need to build this yourself - it comes out of the box
+With Digger you don't need to build this yourself - it comes out of the box.
 The demo app uses the standard Digger [target](https://github.com/diggerhq/target-fargate) with minimal modifications.
