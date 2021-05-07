@@ -25,3 +25,11 @@ Horizontal scalability of real-time backends for web apps is not trivial
 
 With Digger you don't need to build this yourself - it comes out of the box.
 The demo app uses the standard Digger [target](https://github.com/diggerhq/target-fargate) with minimal modifications.
+
+## How it works
+- user hits GET /broadcast of the backend service through the load balancer
+- load balancer routes the request to one of the nodes
+- the node publishes a message to the ws:broadcast Redis channel
+- every instance of the backend service is also subscribed to that channel
+- upon receiving the message every instance sends it to all websocket clients that it is aware of (only a fraction of all subscribers, assuming this is scaled to multiple nodes)
+- since services are behind an ALB, the websockets sessions can be sticky
