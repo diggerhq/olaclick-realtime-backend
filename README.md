@@ -4,7 +4,7 @@ Scalable real-time infrastructure with Digger is easy!
 ```
 $ dg env create test
 ```
-Yep, as simple as that. Demo (open on different devices): [OlaClick realtime demo](http://ola-ws-dev-ws-server-578380537.us-east-1.elb.amazonaws.com/demo.html)Wi
+Yep, as simple as that. Demo (open on different devices): [OlaClick realtime demo](http://ola-ws-dev-ws-server-578380537.us-east-1.elb.amazonaws.com/demo.html)
 
 ## Problem
 
