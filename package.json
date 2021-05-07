@@ -21,7 +21,9 @@
     "@aws-sdk/client-apigatewaymanagementapi": "^3.14.0",
     "aws4": "^1.11.0",
     "axios": "^0.21.1",
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ws": "^7.4.5"
   },
   "devDependencies": {
     "eslint": "^7.25.0"
