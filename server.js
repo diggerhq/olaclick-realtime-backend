@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/broadcast', (req, res) => {
+    console.log('broadcast');
     publisher.publish(broadcastChannel, 'test');
     res.send(200);
 });
