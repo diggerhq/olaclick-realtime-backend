@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
+app.use(express.static('public'));
 
 const publisher = redis.createClient('//ola-dev-redis.ewcbvl.ng.0001.use1.cache.amazonaws.com:6379');
 const subscriber = publisher.duplicate();
@@ -23,6 +24,7 @@ app.get('/broadcast', (req, res) => {
 });
 
 subscriber.on('message', (channel, message) => {
+    console.log(channel, message);
     if (channel === broadcastChannel) {
         wsServer.clients.forEach(wsClient => {
             if (wsClient.readyState === WebSocket.OPEN) {
