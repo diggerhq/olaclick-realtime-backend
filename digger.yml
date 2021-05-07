@@ -1,0 +1,14 @@
+project:
+  name: ola-ws
+environments:
+  local-docker:
+    target: docker
+services:
+  ws-server:
+    service_name: ws-server
+    path: /
+    service_type: container
+    dockerfile: ./Dockerfile
+    container_port: 3000
+    health_check: /
+
